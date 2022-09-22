@@ -6,8 +6,8 @@ class StudentsController < ApplicationController
     end
 
     def highest_grade
-        highest_grade = Student.MAXIMUM(:grade)
-        render json: highest_grade
+        @student =Student.all.sort_by {|grade| grade.custom_method}.reverse
+        render json: student
     end
 
 end
